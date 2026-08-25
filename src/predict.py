@@ -1,0 +1,31 @@
+import pandas as pd
+import joblib 
+from src.preprocessing import data_cleaning,encode_categoricals
+import sqlite3
+from datetime import datetime
+def get_db_connection():
+    """helper function that creates a connection to the database of predictions"""
+    conn=sqlite3.connect('predictions.db')
+    conn.row_factory = sqlite3.Row
+    return conn
+def predict(new_data):
+    model=joblib.load('models/trained_model.pkl')
+    to_predict=new_data.copy()
+    to_predict=data_cleaning(to_predict)
+    to_predict=encode_categoricals(to_predict)
+    expected_features = model.feature_names_in_
+    to_predict = to_predict.reindex(columns=expected_features, fill_value=0)
+    prediction=model.predict(to_predict)[0]
+    # connect to the database to store the new data 
+    new_data=new_data.iloc[0]
+    conn=get_db_connection()
+    cursor=conn.cursor()
+    cursor.execute('INSERT INTO prediction_logs'\
+    ' (prediction_date,Car_Name,Year,Present_Price,Driven_kms,Fuel_Type,Selling_type,'\
+    'Transmission,Owner,Predicted_Price) VALUES(?,?,?,?,?,?,?,?,?,?)',\
+    (datetime.now(),new_data.Car_Name,new_data.Year,new_data.Present_Price,\
+     new_data.Driven_kms,new_data.Fuel_Type,new_data.Selling_type,new_data.\
+     Transmission,new_data.Owner,prediction))
+    conn.commit()
+    conn.close()
+    return prediction
