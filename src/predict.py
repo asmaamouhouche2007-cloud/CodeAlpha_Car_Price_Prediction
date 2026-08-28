@@ -2,6 +2,7 @@ import pandas as pd
 import joblib 
 from src.preprocessing import clean_data
 import sqlite3
+from src.model import residual_calculation
 from datetime import datetime
 def get_db_connection():
     """helper function that creates a connection to the database of predictions"""
@@ -14,6 +15,7 @@ def predict(new_data):
     to_predict=new_data.copy()
     to_predict=clean_data(preprocessor,to_predict)
     prediction=model.predict(to_predict)[0]
+    
     # connect to the database to store the new data 
     new_data=new_data.iloc[0]
     conn=get_db_connection()
