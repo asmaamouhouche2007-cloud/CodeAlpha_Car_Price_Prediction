@@ -29,4 +29,4 @@ def predict(new_data):
      Transmission,new_data.Owner,prediction))
     conn.commit()
     conn.close()
-    return lower_bound,upper_bound
+    return round(lower_bound,2),round(upper_bound,2)
