@@ -1,0 +1,48 @@
+# --- 1. SECRETS & API KEYS (CRITICAL!) ---
+.env
+*.env
+.env.*
+config.py
+secrets.py
+
+# --- 2. VIRTUAL ENVIRONMENT (Never push this!) ---
+venv/
+env/
+ENV/
+.venv/
+
+# --- 3. PYTHON CACHE & JUNK ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# --- 4. DATA & DATABASES (Too large or private) ---
+*.csv
+*.xlsx
+*.db
+*.sqlite
+*.sqlite3
+dataset/
+data/
+input/
+
+# --- 5. SAVED MODELS (Heavy files) ---
+*.pkl
+*.joblib
+*.pt
+*.onnx
+models/
+training_logs/
+
+# --- 6. IDE & SYSTEM FILES ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# --- 7. LOGS & OUTPUT FILES ---
+*.log
+output/
