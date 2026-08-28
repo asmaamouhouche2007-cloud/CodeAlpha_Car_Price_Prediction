@@ -1,6 +1,9 @@
 import pandas as pd
-
-def data_cleaning(df):
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.pipeline import Pipeline
+from sklearn.compose import ColumnTransformer
+'''def data_cleaning(df):
     # dropping the non useful column 
     df = df.drop('Car_Name', axis=1)
     # filling missing values with appropriate values 
@@ -16,3 +19,25 @@ def encode_categoricals(df):
     """Converts text categories into numbers using One-Hot Encoding."""
     df = pd.get_dummies(df, columns=['Fuel_Type', 'Selling_type', 'Transmission'], dtype=int)
     return df
+    '''
+def create_preprocessor(df):
+    data=df[['Year', 'Present_Price', 'Driven_kms',
+       'Fuel_Type', 'Selling_type', 'Transmission', 'Owner']]
+    columns=data.columns
+    numerical_columns=data.select_dtypes(exclude='str').columns
+    categorical_columns=[ col for col in columns if col not in numerical_columns]
+    numerical_transformer=SimpleImputer(strategy='median')
+    categorical_transformer=Pipeline(steps=[
+    ('imputation',SimpleImputer(strategy='most_frequent')),
+    ('onehot',OneHotEncoder(handle_unknown='ignore'))])
+    preprocessor=ColumnTransformer(transformers=[
+    ('num',numerical_transformer,numerical_columns),
+    ('cat',categorical_transformer,categorical_columns)])
+    return preprocessor
+def clean_data(preprocessor,X_train,X_test):
+    X_test=X_test.drop(columns=['Car_Name'])
+    X_train=X_train.drop(columns=['Car_Name'])
+    processed_train=preprocessor.fit_transform(X_train)
+    processed_test=preprocessor.transform(X_test)
+    return processed_train,processed_test
+    

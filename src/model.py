@@ -1,10 +1,16 @@
-from sklearn.ensemble import RandomForestRegressor
+import xgboost as xgb
 from sklearn.metrics import mean_absolute_error
 
-def create_model():
-    """Returns a Random Forest Regressor with chosen hyperparameters."""
-    return RandomForestRegressor(n_estimators=100, max_depth=10, random_state=42)
-
+def create_model(train_X,train_y,test_X,test_y):
+    """Returns a xgb model."""
+    xgb_model = xgb.XGBRegressor(n_estimators=1000, learning_rate=0.1, random_state=42,early_stopping_rounds=5)
+    xgb_model.fit(
+    train_X, 
+    train_y, 
+    eval_set=[(test_X, test_y)],
+    verbose=False
+)
+    
 def evaluate_model(model, X_test, y_test):
     """Evaluates the model using Mean Absolute Error."""
     predictions = model.predict(X_test)
