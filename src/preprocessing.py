@@ -34,10 +34,12 @@ def create_preprocessor(df):
     ('num',numerical_transformer,numerical_columns),
     ('cat',categorical_transformer,categorical_columns)])
     return preprocessor
-def clean_data(preprocessor,X_train,X_test):
+def clean_training_data(preprocessor,X_train):
+        X_train=X_train.drop(columns=['Car_Name'])
+        processed_train=preprocessor.fit_transform(X_train)
+        return processed_train,preprocessor
+def clean_data(preprocessor,X_test):
     X_test=X_test.drop(columns=['Car_Name'])
-    X_train=X_train.drop(columns=['Car_Name'])
-    processed_train=preprocessor.fit_transform(X_train)
     processed_test=preprocessor.transform(X_test)
-    return processed_train,processed_test
+    return processed_test
     

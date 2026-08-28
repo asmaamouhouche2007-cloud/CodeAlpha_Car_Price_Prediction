@@ -10,11 +10,9 @@ def get_db_connection():
     return conn
 def predict(new_data):
     model=joblib.load('models/trained_model.pkl')
+    preprocessor = joblib.load('models/preprocessor.pkl')
     to_predict=new_data.copy()
-    to_predict=data_cleaning(to_predict)
-    to_predict=encode_categoricals(to_predict)
-    expected_features = model.feature_names_in_
-    to_predict = to_predict.reindex(columns=expected_features, fill_value=0)
+    to_predict=clean_data(preprocessor,to_predict)
     prediction=model.predict(to_predict)[0]
     # connect to the database to store the new data 
     new_data=new_data.iloc[0]
