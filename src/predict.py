@@ -1,6 +1,6 @@
 import pandas as pd
 import joblib 
-from src.preprocessing import data_cleaning,encode_categoricals
+from src.preprocessing import clean_data
 import sqlite3
 from datetime import datetime
 def get_db_connection():
