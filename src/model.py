@@ -8,8 +8,8 @@ def create_model(train_X,train_y,test_X,test_y):
     train_X, 
     train_y, 
     eval_set=[(test_X, test_y)],
-    verbose=False
-)
+    verbose=False)
+    return xgb_model
     
 def evaluate_model(model, X_test, y_test):
     """Evaluates the model using Mean Absolute Error."""

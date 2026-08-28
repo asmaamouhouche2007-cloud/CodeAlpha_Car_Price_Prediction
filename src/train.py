@@ -13,7 +13,7 @@ def train():
     joblib.dump(preprocessor, 'models/preprocessor.pkl')
     val_X=clean_data(preprocessor,val_X)
     # creating and fitting the model
-    model=create_model()
+    model=create_model(train_X,train_y,val_X,val_y)
     model.fit(train_X,train_y)
     # evaluating the model
     mae=evaluate_model(model,val_X,val_y)
