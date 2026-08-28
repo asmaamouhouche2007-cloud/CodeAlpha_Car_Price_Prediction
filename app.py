@@ -24,8 +24,8 @@ def make_prediction():
             'Owner': int(request.form['Owner'])
         }
         new_data=pd.DataFrame([new_car],index=[0])
-        predicted_price=predict(new_data)
-        return render_template('result.html',result=f'{predicted_price}')
+        lower_bound,upper_bound=predict(new_data)
+        return render_template('result.html',lower_bound=f'{lower_bound}',upper_bound=f'{upper_bound}')
     except Exception as e:
         flash(f'Error in Making Prediction :{str(e)}','danger')
         return render_template(url_for('home'))

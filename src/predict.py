@@ -2,7 +2,6 @@ import pandas as pd
 import joblib 
 from src.preprocessing import clean_data
 import sqlite3
-from src.model import residual_calculation
 from datetime import datetime
 def get_db_connection():
     """helper function that creates a connection to the database of predictions"""
@@ -12,10 +11,12 @@ def get_db_connection():
 def predict(new_data):
     model=joblib.load('models/trained_model.pkl')
     preprocessor = joblib.load('models/preprocessor.pkl')
+    residual=joblib.load("models/residual_std.pkl")
     to_predict=new_data.copy()
     to_predict=clean_data(preprocessor,to_predict)
     prediction=model.predict(to_predict)[0]
-    
+    lower_bound=prediction-(1.96*residual)
+    upper_bound=prediction+(1.96*residual)
     # connect to the database to store the new data 
     new_data=new_data.iloc[0]
     conn=get_db_connection()
@@ -28,4 +29,4 @@ def predict(new_data):
      Transmission,new_data.Owner,prediction))
     conn.commit()
     conn.close()
-    return prediction
+    return lower_bound,upper_bound

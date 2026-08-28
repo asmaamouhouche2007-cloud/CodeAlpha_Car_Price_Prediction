@@ -7,12 +7,12 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h2 class="mb-4">Predicted Car Price</h2>
+        <h2 class="mb-4">Predicted Car Price Interval</h2>
         
         <div class="card">
             <div class="card-body">
-                <h1 class="card-title text-success">{{ result }}</h1>
-                <p class="card-text">Based on the features you provided.</p>
+                <h1 class="card-title text-success">${{ lower_bound }} - ${{ upper_bound }}</h1>
+                <p class="card-text">Based on the features you provided. (Estimated exact price: ${{ predicted_price }})</p>
                 <a href="/" class="btn btn-primary">Predict Another Car</a>
             </div>
         </div>
