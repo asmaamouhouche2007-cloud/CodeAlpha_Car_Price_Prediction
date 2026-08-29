@@ -93,7 +93,7 @@ python db_init.py
 ### 5. Download Kaggle dataset
 A synthetic dataset is included at `dataset\car data.csv`, so the app runs out of the box. For real-world accuracy:
 
-- Download the "Car Price Prediction" (CarDekho) dataset from [Kaggle](https://www.kaggle.com/datasets/).
+- Download the "Car Price Prediction" (CarDekho) dataset from [Kaggle]([https://www.kaggle.com/datasets/](https://www.kaggle.com/datasets/vijayaadithyanvg/car-price-predictionused-cars)).
 - Replace `dataset\car data.csv` with it, keeping the same column names.
 
 ### 6. Train the model
