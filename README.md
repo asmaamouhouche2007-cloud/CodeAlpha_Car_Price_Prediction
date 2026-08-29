@@ -66,8 +66,8 @@ car_price_prediction/
 
 ### 1. Clone the repository
 ```bash
-git clone .git
-cd 
+git clone https://github.com/asmaamouhouche2007-cloud/CodeAlpha_Car_Price_Prediction.git
+cd CodeAlpha_Car_Price_Prediction
 ```
 
 ### 2. Create and activate a virtual environment
@@ -106,5 +106,4 @@ You will find a .env.example in the root folder , follow the instructions inside
 ```bash
 python app.py run
 ```
-
 Open your browser and navigate to: `http://127.0.0.1:5002`
