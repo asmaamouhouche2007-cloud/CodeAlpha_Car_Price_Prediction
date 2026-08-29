@@ -100,8 +100,9 @@ A synthetic dataset is included at `dataset\car data.csv`, so the app runs out o
 ```bash
 python -m  src.train
 ```
-
-### 7. Run the web application
+### 7. Creating .env file 
+You will find a .env.example in the root folder , follow the instructions inside it and create .env file in which you put your secrete key
+### 8. Run the web application
 ```bash
 python app.py run
 ```
