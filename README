@@ -57,14 +57,17 @@ car_price_prediction/
 ├── requirements.txt
 ├── .gitignore
 |__.env.example                # Template that show how to create your own .env file
+└── db_init.py                 # Create database to store the features + predicted preice of input cars
+└── BUGS.md                    # documenting major bugs faced during developement
+└── schema.sql                 # schema of the database
 └── README.md
 ```
 ## 🚀 Getting Started
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/car_price_app.git
-cd car_price_app
+git clone .git
+cd 
 ```
 
 ### 2. Create and activate a virtual environment
@@ -82,19 +85,23 @@ source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
-
-### 4. Download Kaggle dataset
+### 4. Initialize the database
+Runs `db_init.py` to create the database and its tables.
+```bash
+python db_init.py
+```
+### 5. Download Kaggle dataset
 A synthetic dataset is included at `dataset\car data.csv`, so the app runs out of the box. For real-world accuracy:
 
 - Download the "Car Price Prediction" (CarDekho) dataset from [Kaggle](https://www.kaggle.com/datasets/).
 - Replace `dataset\car data.csv` with it, keeping the same column names.
 
-### 5. Train the model
+### 6. Train the model
 ```bash
 python -m  src.train
 ```
 
-### 6. Run the web application
+### 7. Run the web application
 ```bash
 python app.py run
 ```
