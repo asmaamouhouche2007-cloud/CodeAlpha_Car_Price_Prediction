@@ -106,5 +106,4 @@ You will find a .env.example in the root folder , follow the instructions inside
 ```bash
 python app.py run
 ```
-
 Open your browser and navigate to: `http://127.0.0.1:5002`
