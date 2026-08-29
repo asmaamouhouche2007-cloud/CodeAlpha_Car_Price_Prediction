@@ -1,9 +1,6 @@
 # --- 1. SECRETS & API KEYS (CRITICAL!) ---
 .env
 *.env
-.env.*
-config.py
-secrets.py
 
 # --- 2. VIRTUAL ENVIRONMENT (Never push this!) ---
 venv/
@@ -25,9 +22,6 @@ __pycache__/
 *.db
 *.sqlite
 *.sqlite3
-dataset/
-data/
-input/
 
 # --- 5. SAVED MODELS (Heavy files) ---
 *.pkl
