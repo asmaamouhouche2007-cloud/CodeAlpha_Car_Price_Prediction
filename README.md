@@ -13,9 +13,9 @@ The project is designed to mimic a **real-world production environment**—it go
 
 ---
 ## 📸 Screenshots 
-![Input Form](screenshots\Capture1.PNG)
-![Input Form](screenshots\Capture2.PNG)
-![result](screenshots\Capture3.PNG)
+![Input Form](screenshots/Capture1.PNG)
+![Input Form](screenshots/Capture2.PNG)
+![result](screenshots/Capture3.PNG)
 ---
 ## 🏗️ Architecture (Tech Stack)
 
