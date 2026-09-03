@@ -6,3 +6,5 @@ seaborn
 ipython
 jupyter
 xgboost
+python-dotenv
+flask
