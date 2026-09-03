@@ -8,3 +8,4 @@ jupyter
 xgboost
 python-dotenv
 flask
+joblib
