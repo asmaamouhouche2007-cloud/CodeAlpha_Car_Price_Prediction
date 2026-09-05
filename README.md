@@ -39,6 +39,10 @@ car_price_prediction/
 │   ├── model.pkl
 │   └── preprocessor.pkl
 |   |__residual_std.pkl
+├── screenshots/                       # Screenshots of the project 
+│   ├── Capture1.png
+│   ├── Capture2.png         
+│   └── Capture3.png       
 ├── src/                       # Modular, production-ready code
 │   ├── __init__.py
 │   ├── data_loader.py         # Loads raw data
